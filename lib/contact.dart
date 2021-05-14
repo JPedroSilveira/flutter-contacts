@@ -1,6 +1,6 @@
 class ListaContatos {
   late final List<Contato> _contatos;
-  ListaContatos.inicializar(){
+  ListaContatos.inicializar() {
     _contatos = <Contato>[];
     _contatos.add(Contato('Leonardo', 'M', 987654321, 'leonardo@hotmail.com'));
     _contatos.add(Contato('João', 'M', 947552321, 'joao@hotmail.com'));
