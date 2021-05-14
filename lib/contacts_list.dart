@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_contacts/contact.dart';
 import 'package:flutter_contacts/contact_item.dart';
 
+import 'novo_contato.dart';
+
 class ContactsList extends StatefulWidget {
   ContactsList({Key? key}) : super(key: key);
 
@@ -17,8 +19,33 @@ class _ContactsListState extends State<ContactsList> {
     _listaContatos = ListaContatos.inicializar();
   }
 
-  void _addContact() {
-    //_listaContatos.add(contato)
+  void _addContact(BuildContext context) async {
+    final Contato? contato = await Navigator.push(context, MaterialPageRoute(builder: (context) => NovoContato()));
+    if (contato != null) {
+      setState(() => _listaContatos.add(contato));
+      showSuccessDialog(context);
+    } else {
+      showFailDialog(context);
+    }
+  }
+
+  void showSuccessDialog(BuildContext context) {
+    showTextDialog(context, 'Contato Adicionado');
+  }
+
+  void showFailDialog(BuildContext context) {
+    showTextDialog(context, 'Erro ao adicionar contato');
+  }
+
+  void showTextDialog(BuildContext context, String text) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          content: Text(text),
+        );
+      }
+    );
   }
 
   void _removeContact(int index) {
@@ -41,7 +68,7 @@ class _ContactsListState extends State<ContactsList> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _addContact,
+        onPressed: () => _addContact(context),
         tooltip: 'Add contact',
         child: Icon(Icons.add),
       ),
