@@ -11,24 +11,25 @@ class ContactsList extends StatefulWidget {
 }
 
 class _ContactsListState extends State<ContactsList> {
-  ListaContatos listaContatos = ListaContatos.inicializar();
+  late final ListaContatos _listaContatos;
 
   _ContactsListState() {
-
+    _listaContatos = ListaContatos.inicializar();
   }
 
   void _addContact() {
-    //TODO Add contact
+
+    //_listaContatos.add(contato)
   }
 
   void _removeContact(int index) {
-    //TODO Add contact
+    _listaContatos.remove(index);
   }
 
 
   @override
   Widget build(BuildContext context) {
-    List<Contato> contatos = listaContatos.getListaContatos;
+    List<Contato> contatos = _listaContatos.getListaContatos;
     return Scaffold(
       body: ListView.builder(
         itemCount: contatos.length,

@@ -11,6 +11,14 @@ class ListaContatos {
   }
 
   List<Contato> get getListaContatos => _contatos;
+
+  add(Contato contato) {
+    _contatos.add(contato);
+  }
+
+  remove(int index) {
+    _contatos.removeAt(index);
+  }
 }
 
 class Contato {
