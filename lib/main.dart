@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_contacts/contacts_list.dart';
+
+import './home.dart';
+
+const APP_NAME = 'Flutter Contacts';
 
 void main() {
-  runApp(MyApp());
+  runApp(App());
 }
 
-class MyApp extends StatelessWidget {
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Contacts',
+      debugShowCheckedModeBanner: false,
+      title: APP_NAME,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ContactsList(),
+      home: Home(),
     );
   }
 }
